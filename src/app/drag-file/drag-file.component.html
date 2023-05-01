@@ -1,0 +1,22 @@
+<div cdkDropList [cdkDropListData]="items" (cdkDropListDropped)="onDrop($event)">
+  <div *ngFor="let item of items" cdkDrag>
+    {{ item.name }}
+  </div>
+</div>
+
+<div #boundaryElement class="example-boundary">
+  <div #dragElement class="example-box" cdkDrag (cdkDragMoved)="onMoved($event)" >
+    <div *ngFor="let item of items2" class="item" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragMoved)="onMovedShow($event, item)">
+      {{ item.name }}
+    </div>
+  </div>
+</div>
+
+
+<div class="show-xy-value">
+  <div class="item-xy me-3" *ngFor="let item of items2">
+    <h3> {{ item.name }}</h3>
+    <p>Top {{item.y}}</p>
+    <p>Left {{item.x}}</p>
+  </div>
+</div>
